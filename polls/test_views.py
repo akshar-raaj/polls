@@ -9,11 +9,13 @@ from .models import Question
 class TestViews():
 
     @pytest.mark.django_db
+    @pytest.mark.polls_list
     def test_index(self, client):
         response = client.get('/polls/')
         assert response.status_code == 200
 
     @pytest.mark.django_db
+    @pytest.mark.polls_list
     def test_index_num_questions(self, client):
         """
         This test asserts that latest n questions are shown by the index view.
@@ -32,6 +34,7 @@ class TestViews():
 
     @pytest.mark.django_db
     @pytest.mark.parametrize('url_fragment', ['', 'results/', 'vote/'])
+    @pytest.mark.polls_detail
     def test_detail_views(self, client, url_fragment):
         pub_date = timezone.now()
         question = Question.objects.create(question_text='How you doin? <Joey style>',

@@ -1,0 +1,4 @@
+Django==4.0.5
+pytest==7.1.2
+pytest-django==4.5.2
+pylint==2.14.1
